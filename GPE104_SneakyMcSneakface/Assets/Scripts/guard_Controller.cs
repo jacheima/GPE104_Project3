@@ -11,12 +11,15 @@ public class guard_Controller : MonoBehaviour
     public bool canHearPlayer = false;
     public float maxSpeed = .5f;
     public float speed;
+    public int nextWaypoint = 2;
     public Vector3 moveDirection;
 
     public GameObject position1;
     public GameObject position2;
     public GameObject position3;
     public GameObject position4;
+
+    
 
     // Use this for initialization
 	void Start ()
@@ -29,7 +32,7 @@ public class guard_Controller : MonoBehaviour
 	    if (canSeePlayer == false && canHearPlayer == false)
 	    {
 	        speed = maxSpeed * 0.5f;
-            moveToNextPosition();
+            moveToNextWaypoint();
 	    }
 
 	    if (canSeePlayer == true)
@@ -43,28 +46,31 @@ public class guard_Controller : MonoBehaviour
 	    }
 	}
 
-    void moveToNextPosition()
+    void moveToNextWaypoint()
     {
-        Debug.Log("Made it to moveToNextPosition");
-        if (transform.position == position1.transform.position)
+        if (nextWaypoint == 1)
         {
-            moveDirection = (position2.transform.position - transform.position);
+            moveDirection = position2.transform.position - transform.position;
             transform.position += moveDirection * speed * Time.deltaTime;
+            nextWaypoint = 2;
         }
-        if (transform.position == position2.transform.position)
+        if (nextWaypoint == 2)
         {
-            moveDirection = (position3.transform.position - transform.position);
+            moveDirection = position3.transform.position - transform.position;
             transform.position += moveDirection * speed * Time.deltaTime;
+            nextWaypoint = 3;
         }
-        if (transform.position == position3.transform.position)
+        if (nextWaypoint == 3)
         {
-            moveDirection = (position4.transform.position - transform.position);
+            moveDirection = position4.transform.position - transform.position;
             transform.position += moveDirection * speed * Time.deltaTime;
+            nextWaypoint = 4;
         }
-        if (transform.position == position4.transform.position)
+        if (nextWaypoint == 4)
         {
-            moveDirection = (position1.transform.position - transform.position);
+            moveDirection = position1.transform.position - transform.position;
             transform.position += moveDirection * speed * Time.deltaTime;
+            nextWaypoint = 1;
         }
 
     }
