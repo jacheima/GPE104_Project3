@@ -9,12 +9,12 @@ public class PlayerController : MonoBehaviour
     public float playerRotateSpeed = 90.0f;
     public float playerSpeed = 0.1f;
 
-	// Use this for initialization
-	void Start ()
-	{
-	    
-        
-	}
+    // Use this for initialization
+    void Start()
+    {
+
+
+    }
 
     // Update is called once per frame
     void Update()
