@@ -6,18 +6,25 @@ using UnityEngine;
 public class guard_Controller : MonoBehaviour
 {
 
-    public Transform player;
+    
     public bool canSeePlayer = false;
     public bool canHearPlayer = false;
-    public float maxSpeed = .5f;
-    public float speed;
-    public int nextWaypoint = 2;
-    public Vector3 moveDirection;
+
+    public Transform player;
+    public GameObject guard;
+    public float nextWaypoint = 2;
+
+    public float guardSpeed = .5f;
+    public float maxGuardSpeed = 1.0f;
+
+    public float moveDirection;
 
     public GameObject position1;
     public GameObject position2;
     public GameObject position3;
     public GameObject position4;
+
+    public bool didReachWP = false;
 
     
 
@@ -31,8 +38,7 @@ public class guard_Controller : MonoBehaviour
 	void Update () {
 	    if (canSeePlayer == false && canHearPlayer == false)
 	    {
-	        speed = maxSpeed * 0.5f;
-            moveToNextWaypoint();
+	        
 	    }
 
 	    if (canSeePlayer == true)
@@ -48,29 +54,13 @@ public class guard_Controller : MonoBehaviour
 
     void moveToNextWaypoint()
     {
-        if (nextWaypoint == 1)
+        if(nextWaypoint == 2)
         {
-            moveDirection = position2.transform.position - transform.position;
-            transform.position += moveDirection * speed * Time.deltaTime;
-            nextWaypoint = 2;
-        }
-        if (nextWaypoint == 2)
-        {
-            moveDirection = position3.transform.position - transform.position;
-            transform.position += moveDirection * speed * Time.deltaTime;
-            nextWaypoint = 3;
-        }
-        if (nextWaypoint == 3)
-        {
-            moveDirection = position4.transform.position - transform.position;
-            transform.position += moveDirection * speed * Time.deltaTime;
-            nextWaypoint = 4;
-        }
-        if (nextWaypoint == 4)
-        {
-            moveDirection = position1.transform.position - transform.position;
-            transform.position += moveDirection * speed * Time.deltaTime;
-            nextWaypoint = 1;
+            transform.position += new Vector3(guardSpeed, 0, 0) * Time.deltaTime;
+            if (didReachWP == true)
+            {
+
+            }
         }
 
     }
