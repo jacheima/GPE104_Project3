@@ -48,5 +48,11 @@ public class GuardController : MonoBehaviour
 	    Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
 	    //Apply the rotation to our transform
 	    transform.rotation = Quaternion.RotateTowards(transform.rotation, q, 180f);
+
+
+        //the hearing mechanic
+        
+
+
     }
 }

@@ -9,6 +9,7 @@ public class gameManager : MonoBehaviour
     public float currentAmmo = 10f;
 
     public GameObject player;
+    
 
     public static gameManager instance = null;
 
