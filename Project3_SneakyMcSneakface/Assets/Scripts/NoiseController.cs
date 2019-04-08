@@ -5,6 +5,8 @@ using UnityEngine;
 public class NoiseController : MonoBehaviour {
 
     public GameObject guard;
+    public Transform player;
+    
 
 	// Use this for initialization
 	void Start () {
@@ -15,5 +17,12 @@ public class NoiseController : MonoBehaviour {
 	void Update () {
 		
 	}
-    
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player_Noise" || other.gameObject.tag == "Player")
+        {
+            transform.LookAt(player);
+        }
+    }
 }
